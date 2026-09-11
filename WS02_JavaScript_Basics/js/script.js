@@ -36,8 +36,11 @@ console.log("Hello, " + visitorName + "! Your favorite animal is " + visitorFavo
 // ⭐⭐ BONUS Ask the user for their favorite animal.If their favorite animal is "Blue Elephant", print: Great choice! That's my favorite animal too!
 // ⭐⭐ BONUS Otherwise, print: Nice! Your favorite animal is [animal]. Can you figure out how to do this using if / else?
 
-// const visitorFavoriteAnimal = prompt("What is your favorite animal?");
-
+if (visitorFavoriteAnimal === "Kultainennoutaja") {
+    console.log("Hyvä valinta! Se on myös minun lempieläimeni!");
+} else {
+    console.log("Kiva! Sinun lempieläimesi on " + visitorFavoriteAnimal + ".");
+}
 // STEP 4: Conditionals
 const visitorAge = prompt("Kuinka vanha olet?");
 
