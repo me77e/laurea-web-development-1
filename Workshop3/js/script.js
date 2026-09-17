@@ -1,6 +1,7 @@
 function showMessage() {
     alert("You clicked me!");    
 } 
+
 function showTable() {
     const animal = "Tiikeri";
     const habitat = "Metsä";
