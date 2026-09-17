@@ -23,3 +23,9 @@ function showTable() {
 
     document.querySelector("#tableContainer").innerHTML = table;
 }
+
+const headings = document.querySelectorAll("h2");
+
+headings[1].addEventListener("mouseover", function() {
+    console.log("Stepped over me with a mouse!");
+});
