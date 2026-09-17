@@ -48,3 +48,42 @@ feedback.addEventListener("focus", function() {
     status.textContent = "Kirjoitat palautetta...";
     feedback.style.backgroundColor = "lightyellow";
 });
+
+feedback.addEventListener("blur", function() {
+    status.textContent = "";
+    feedback.style.backgroundColor = "";
+});
+
+// Merkkilaskuri ja esikatselu
+
+const charcount = document.querySelector("#charcount");
+const preview = document.querySelector("#preview");
+
+feedback.addEventListener("input", function() {
+    const text = feedback.value;
+
+    charcount.textContent = text.length + "/200";
+    preview.textContent = text;
+});
+
+// Harjoitus 4: Lomakkeen lähettäminen
+
+const feedbackForm = document.querySelector("#feedbackForm");
+
+feedbackForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const text = feedback.value;
+
+    if (text.length < 10 || text.length > 200) {
+        status.textContent = "Palautteen tulee olla 10–200 merkkiä pitkä!";
+        status.style.color = "red";
+    } else {
+        feedback.value = "";
+        charcount.textContent = "0/200";
+        preview.textContent = "(Esikatselu tulee tähän)";
+        status.textContent = "Kiitos palautteesta!";
+        status.style.color = "green";
+    }
+});
+
