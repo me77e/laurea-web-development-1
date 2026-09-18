@@ -25,7 +25,7 @@ function showTable() {
     document.querySelector("#tableContainer").innerHTML = table;
 }
 
-// Harjoitus 2: Kuuntelijat ja DOM
+// Harjoitus 2
 
 const headings = document.querySelectorAll("h2");
 
@@ -40,22 +40,20 @@ heading1.addEventListener("click", function() {
     heading1.style.color = "red";
 });
 
-// Harjoitus 3: Syöttötapahtumat
+// Harjoitus 3
 
 const feedback = document.querySelector("#feedback");
-const status = document.querySelector("#status");
+const statusMessage = document.querySelector("#status");
 
 feedback.addEventListener("focus", function() {
-    status.textContent = "Kirjoitat palautetta...";
+    statusMessage.textContent = "Kirjoitat palautetta...";
     feedback.style.backgroundColor = "lightyellow";
 });
 
 feedback.addEventListener("blur", function() {
-    status.textContent = "";
+    statusMessage.textContent = "";
     feedback.style.backgroundColor = "";
 });
-
-// Merkkilaskuri ja esikatselu
 
 const charcount = document.querySelector("#charcount");
 const preview = document.querySelector("#preview");
@@ -67,7 +65,7 @@ feedback.addEventListener("input", function() {
     preview.textContent = text;
 });
 
-// Harjoitus 4: Lomakkeen lähettäminen
+// Harjoitus 4
 
 const feedbackForm = document.querySelector("#feedbackForm");
 
@@ -77,14 +75,48 @@ feedbackForm.addEventListener("submit", function(event) {
     const text = feedback.value;
 
     if (text.length < 10 || text.length > 200) {
-        status.textContent = "Palautteen tulee olla 10–200 merkkiä pitkä!";
-        status.style.color = "red";
+        statusMessage.textContent = "Palautteen tulee olla 10–200 merkkiä pitkä!";
+        statusMessage.style.color = "red";
     } else {
         feedback.value = "";
         charcount.textContent = "0/200";
         preview.textContent = "(Esikatselu tulee tähän)";
-        status.textContent = "Kiitos palautteesta!";
-        status.style.color = "green";
+        statusMessage.textContent = "Kiitos palautteesta!";
+        statusMessage.style.color = "green";
     }
 });
 
+// Harjoitus 5
+
+const keybox = document.querySelector("#keybox");
+const keyinfo = document.querySelector("#keyinfo");
+let count = 0;
+document.addEventListener("keydown", function(event) {
+    console.log(event);
+
+    keyinfo.textContent = "Näppäin: " + event.key +
+        " | Koodi: " + event.code;
+
+    keybox.textContent = event.key;
+    keybox.style.fontSize = "40px";
+    if (event.key === "a") {
+    keybox.style.backgroundColor = "lightblue";
+} else if (event.key === "b") {
+    keybox.style.backgroundColor = "lightgreen";
+} else {
+    keybox.style.backgroundColor = "lightyellow";
+}
+count++;
+keyinfo.textContent += " | Painalluksia: " + count;
+if (event.shiftKey) {
+    keyinfo.textContent += " | Shift painettu";
+}
+
+if (event.ctrlKey) {
+    keyinfo.textContent += " | Ctrl painettu";
+}
+
+if (event.altKey) {
+    keyinfo.textContent += " | Alt painettu";
+}
+});
